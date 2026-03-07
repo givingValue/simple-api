@@ -45,9 +45,9 @@ def health_check():
 
 
 @app.get("/items/{item_id}")
-def read_item(item_id: int, q: str | None = None):
+def read_item(item_id: int, item_name: str | None = None):
     """Example item endpoint."""
-    return {"item_id": item_id, "q": q}
+    return {"item_id": item_id, "item_name": item_name}
 
 
 def main() -> None:
