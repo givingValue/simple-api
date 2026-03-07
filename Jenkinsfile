@@ -9,7 +9,7 @@ pipeline {
                 echo 'El pipeline está funcionando correctamente.' 
             } 
         } 
-        stage('Fecha y Hora') { 
+        stage('Fecha y Usuario') { 
             steps { 
                 sh 'date' 
                 sh 'whoami' 
