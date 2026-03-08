@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: simple-api
+  namespace: simple-api
+  annotations:
+    # For Traefik (k3s default)
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure,web
+spec:
+  ingressClassName: traefik
+  rules:
+    # Replace with your host: e.g. api.yourdomain.com or PUBLIC_IP.sslip.io
+    - host: simple-api.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: simple-api
+                port:
+                  number: 80
+  # Uncomment for TLS (requires cert-manager or manual cert)
+  # tls:
+  #   - hosts:
+  #       - simple-api.local
+  #     secretName: simple-api-tls

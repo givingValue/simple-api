@@ -1,0 +1,17 @@
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.git/
+.gitignore
+.env
+.env.*
+.idea/
+.vscode/
+*.md
+k8s/
+Jenkinsfile
+Dockerfile
+.dockerignore
