@@ -41,7 +41,7 @@ def read_root():
 @app.get("/health")
 def health_check():
     """Health check for load balancers and monitoring."""
-    return {"status": "healthy"}
+    return {"status": "healthy!!!!"}
 
 
 @app.get("/items/{item_id}")

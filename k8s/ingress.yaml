@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    # Replace with your host: e.g. api.yourdomain.com or PUBLIC_IP.sslip.io
+    # Replace with your host: e.g. api.yourdomain.com or api.PUBLIC_IP.sslip.io
     - host: simple-api.local
       http:
         paths:
