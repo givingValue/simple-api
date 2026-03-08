@@ -76,14 +76,30 @@ The app can be deployed to Kubernetes (e.g. k3s) using the manifests in `k8s/`.
 
 1. **dockerhub-credentials** — Kind: "Username with password". Your DockerHub username and password (or access token).
 
-2. **kubeconfig-file** — Kind: "Secret file". Upload your kubeconfig file (e.g. `~/.kube/config` or `/etc/rancher/k3s/k3s.yaml`). This allows the pipeline to run `kubectl` without storing the config on the Jenkins agent.
+2. **kubeconfig-file** — Kind: "Secret file". Upload your kubeconfig file (e.g. `~/.kube/config` or `/etc/rancher/k3s/k3s.yaml`). ID: `kubeconfig-file`.
 
-   - Manage Jenkins → Credentials → Add Credentials
-   - Kind: **Secret file**
-   - File: Upload your kubeconfig
-   - ID: **kubeconfig-file**
+**Environment variables (no values in pipeline):**  
+Set `DOCKERHUB_USERNAME` and `INGRESS_HOST` in one of these ways:
 
-**Pipeline parameters:** `DOCKERHUB_USERNAME`, `INGRESS_HOST` (e.g. `api.54.123.45.67.sslip.io`)
+**Option A – Job configuration (EnvInject plugin):**
+1. Install the **EnvInject** plugin (Manage Jenkins → Plugins).
+2. Open your job → **Configure** → **Build Environment**.
+3. Enable **Inject environment variables**.
+4. In **Properties Content**, add:
+   ```
+   DOCKERHUB_USERNAME=your-dockerhub-username
+   INGRESS_HOST=api.54.123.45.67.sslip.io
+   ```
+
+**Option B – Global properties:**  
+Manage Jenkins → System → Global properties → Environment variables → add the same variables.
+
+| Variable           | Example              |
+|-------------------|----------------------|
+| `DOCKERHUB_USERNAME` | `myuser`           |
+| `INGRESS_HOST`    | `api.54.123.45.67.sslip.io` |
+
+**Pipeline parameter:** `IMAGE_TAG` (default: `latest`)
 
 **Prerequisites:** Jenkins agent with Docker and kubectl installed.
 
