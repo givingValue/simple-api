@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'DOCKERHUB_USERNAME', defaultValue: '', description: 'DockerHub username (e.g. myuser)')
+        string(name: 'DOCKERHUB_USERNAME', description: 'DockerHub username (e.g. myuser)')
         string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Docker image tag')
-        string(name: 'INGRESS_HOST', defaultValue: 'simple-api.local', description: 'Hostname for Ingress (e.g. 1.2.3.4.sslip.io or api.yourdomain.com)')
+        string(name: 'INGRESS_HOST', description: 'Hostname for Ingress (e.g. 1.2.3.4.sslip.io or api.yourdomain.com)')
     }
 
     environment {
